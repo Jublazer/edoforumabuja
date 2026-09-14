@@ -4,10 +4,11 @@ import styles from "../../page.module.css";
 export default function DonationSuccessPage({
   searchParams,
 }: {
-  searchParams?: { amount?: string; payment?: string };
+  searchParams?: { amount?: string; payment?: string; reference?: string };
 }) {
   const amount = searchParams?.amount ? Number(searchParams.amount) : 0;
   const paymentMethod = searchParams?.payment === "paystack" ? "Paystack" : "Bank transfer";
+  const reference = searchParams?.reference;
 
   return (
     <main className={styles.successPage}>
@@ -29,6 +30,15 @@ export default function DonationSuccessPage({
             <span>{paymentMethod}</span>
           </div>
         </div>
+
+        {reference ? (
+          <div className={styles.successGrid} style={{ marginTop: 16 }}>
+            <div className={styles.successMeta}>
+              <strong>Reference</strong>
+              <span>{reference}</span>
+            </div>
+          </div>
+        ) : null}
 
         <div className={styles.heroActions} style={{ marginTop: 28 }}>
           <Link href="/" className={styles.primaryButton}>

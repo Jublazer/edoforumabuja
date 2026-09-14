@@ -70,6 +70,7 @@ export default function Home() {
   const [donationOpen, setDonationOpen] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState("25000");
   const [donationMode, setDonationMode] = useState<"paystack" | "bank">("paystack");
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const bankDetails = {
     bankName: "Zenith Bank Nigeria Plc",
@@ -107,7 +108,8 @@ export default function Home() {
     }
 
     if (donationMode === "bank") {
-      window.location.href = `/donate/success?amount=${parsedAmount}`;
+      setDonationOpen(false);
+      window.location.href = `/donate/success?amount=${parsedAmount}&payment=bank`;
       return;
     }
 
@@ -131,16 +133,19 @@ export default function Home() {
         });
 
       try {
+        setIsProcessing(true);
+
         if (!(window as any).PaystackPop) {
           await loadScript("https://js.paystack.co/v1/inline.js");
         }
 
+        const reference = `EFA-${Date.now()}`;
         const handler = (window as any).PaystackPop.setup({
           key: publicKey,
           email: "support@edoforumabuja.org",
           amount: parsedAmount * 100,
           currency: "NGN",
-          ref: `EFA-${Date.now()}`,
+          ref: reference,
           metadata: {
             custom_fields: [
               {
@@ -150,12 +155,37 @@ export default function Home() {
               },
             ],
           },
-          callback: () => {
-            setDonationOpen(false);
-            window.location.href = `/donate/success?amount=${parsedAmount}&payment=paystack`;
+          callback: async (response: { reference?: string }) => {
+            try {
+              const verifyResponse = await fetch("/api/donate/verify", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  reference: response.reference,
+                  amount: parsedAmount,
+                  email: "support@edoforumabuja.org",
+                }),
+              });
+
+              const verifyData = await verifyResponse.json();
+
+              if (!verifyResponse.ok || !verifyData.success) {
+                throw new Error(verifyData.error || "Payment verification failed.");
+              }
+
+              setDonationOpen(false);
+              window.location.href = `/donate/success?amount=${parsedAmount}&payment=paystack&reference=${encodeURIComponent(response.reference || reference)}`;
+            } catch (error) {
+              console.error(error);
+              window.alert("We could not confirm your donation. Please contact donations@edoforumabuja.org for support.");
+              setDonationOpen(false);
+            } finally {
+              setIsProcessing(false);
+            }
           },
           onClose: () => {
             setDonationOpen(false);
+            setIsProcessing(false);
           },
         });
 
@@ -163,6 +193,7 @@ export default function Home() {
         return;
       } catch (error) {
         console.error(error);
+        setIsProcessing(false);
       }
     }
 
@@ -415,8 +446,12 @@ export default function Home() {
                 </div>
               ) : null}
 
-              <button type="submit" className={styles.primaryButton}>
-                {donationMode === "bank" ? "Confirm bank transfer" : "Donate now"}
+              <button type="submit" className={styles.primaryButton} disabled={isProcessing}>
+                {isProcessing
+                  ? "Processing..."
+                  : donationMode === "bank"
+                    ? "Confirm bank transfer"
+                    : "Donate now"}
               </button>
             </form>
           </div>

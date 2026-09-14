@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Edo Forum Abuja
 
-## Getting Started
+A premium community website for Edo Forum Abuja, built with Next.js, TypeScript, and a dark luxury design system.
 
-First, run the development server:
+## Local setup
+
+1. Copy the example environment file:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Add your real SMTP and Paystack values in `.env.local`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Start the development server:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Open http://localhost:3000 to view the site.
 
-To learn more about Next.js, take a look at the following resources:
+## Required environment variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+SMTP_FROM=your-email@gmail.com
+CONTACT_EMAIL=hello@edoforumabuja.org
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=pk_test_xxxxxxxxxxxxxxxxxxxxxx
+PAYSTACK_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxxxxxxxx
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### SMTP notes
 
-## Deploy on Vercel
+Use a Gmail or SMTP provider that supports app passwords. For Gmail, generate an App Password and place it in `SMTP_PASS`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Paystack notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY` is used in the browser when opening the inline donation form.
+- `PAYSTACK_SECRET_KEY` is used only on the server for transaction verification in `/api/donate/verify`.
+
+## Production deployment on Vercel
+
+1. Push the project to GitHub.
+2. Import the repository in [Vercel](https://vercel.com).
+3. When prompted for environment variables, add the same values from `.env.local`.
+4. Set the production domain in `NEXT_PUBLIC_SITE_URL` to your live URL, for example:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://edoforumabuja.org
+```
+
+5. Deploy.
+
+## Server-side verification flow
+
+The donation flow is wired to use Paystack in a secure pattern:
+
+- Browser opens the Paystack inline popup using `NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY`.
+- After payment succeeds, the browser sends the `reference` to `/api/donate/verify`.
+- The server verifies the transaction using `PAYSTACK_SECRET_KEY` against the Paystack API.
+- A thank-you page is shown only after server-side verification succeeds.
+
+## Additional deployment notes
+
+- For production, never expose `PAYSTACK_SECRET_KEY` in the browser.
+- Add your real SMTP credentials only in the deployment environment, not in public code.
+- If you use a custom domain, make sure the mail from address matches the domain or is approved by your SMTP provider.
