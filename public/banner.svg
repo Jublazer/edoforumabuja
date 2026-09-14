@@ -1,0 +1,25 @@
+<svg width="840" height="620" viewBox="0 0 840 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="109" y1="0" x2="760" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827"/>
+      <stop offset="1" stop-color="#1F2937"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="180" y1="140" x2="620" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBBF24"/>
+      <stop offset="1" stop-color="#EA580C"/>
+    </linearGradient>
+  </defs>
+  <rect width="840" height="620" rx="36" fill="url(#bg)"/>
+  <circle cx="704" cy="110" r="88" fill="#F59E0B" fill-opacity="0.18"/>
+  <circle cx="170" cy="500" r="120" fill="#DC2626" fill-opacity="0.12"/>
+  <rect x="86" y="104" width="260" height="260" rx="30" fill="#F8FAFC" fill-opacity="0.06"/>
+  <path d="M156 150H334C346.15 150 356 159.85 356 172V182C356 194.15 346.15 204 334 204H212V276H322C334.15 276 344 285.85 344 298V308C344 320.15 334.15 330 322 330H156V150Z" fill="url(#accent)"/>
+  <rect x="454" y="126" width="270" height="22" rx="11" fill="#E2E8F0" fill-opacity="0.5"/>
+  <rect x="454" y="176" width="200" height="18" rx="9" fill="#E2E8F0" fill-opacity="0.35"/>
+  <rect x="454" y="218" width="230" height="18" rx="9" fill="#E2E8F0" fill-opacity="0.35"/>
+  <rect x="90" y="408" width="210" height="72" rx="18" fill="#F8FAFC" fill-opacity="0.08"/>
+  <rect x="320" y="408" width="210" height="72" rx="18" fill="#F8FAFC" fill-opacity="0.08"/>
+  <rect x="550" y="408" width="210" height="72" rx="18" fill="#F8FAFC" fill-opacity="0.08"/>
+  <text x="90" y="90" fill="#F8FAFC" font-size="30" font-family="Arial, sans-serif" font-weight="700" letter-spacing="4">EDO FORUM ABUJA</text>
+  <text x="90" y="550" fill="#FBBF24" font-size="28" font-family="Arial, sans-serif" font-weight="700" letter-spacing="3">UNITY • CULTURE • PROGRESS</text>
+</svg>

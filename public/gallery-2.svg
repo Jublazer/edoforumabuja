@@ -1,0 +1,8 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="420" rx="32" fill="#1F2937"/>
+  <rect x="90" y="110" width="460" height="210" rx="24" fill="#F8FAFC" fill-opacity="0.08"/>
+  <path d="M140 256C165 218 191 198 223 198C253 198 281 214 300 242C323 276 347 302 393 302C430 302 472 277 507 232V300H140V256Z" fill="#FBBF24" fill-opacity="0.85"/>
+  <circle cx="182" cy="168" r="38" fill="#F59E0B" fill-opacity="0.9"/>
+  <rect x="164" y="52" width="300" height="36" rx="18" fill="#F8FAFC" fill-opacity="0.18"/>
+  <text x="320" y="352" text-anchor="middle" fill="#F8FAFC" font-size="30" font-family="Arial, sans-serif" font-weight="700">Cultural Night</text>
+</svg>

@@ -1,0 +1,893 @@
+.page {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 60px;
+  color: #f8fafc;
+}
+
+.topbar,
+.hero,
+.section,
+.sectionAlt,
+.ctaSection,
+.footer {
+  width: 100%;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(251, 191, 36, 0.22);
+  border-radius: 22px;
+  padding: 18px 24px;
+  backdrop-filter: blur(14px);
+  position: sticky;
+  top: 16px;
+  z-index: 10;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.26);
+}
+
+.brandWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brandLogoWrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.18), rgba(220, 38, 38, 0.12));
+  border: 1px solid rgba(251, 191, 36, 0.24);
+}
+
+.brandLogoWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brandName {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+  color: #f8fafc;
+}
+
+.tagline {
+  display: block;
+  color: rgba(226, 232, 240, 0.72);
+  font-size: 0.7rem;
+  margin-top: 2px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav a,
+.footer a {
+  color: rgba(226, 232, 240, 0.82);
+  font-size: 0.95rem;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.nav a:hover,
+.footer a:hover {
+  color: #f8fafc;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.9rem 1.4rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #f59e0b, #dc2626);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(234, 88, 12, 0.32);
+}
+
+.secondaryButton {
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.35);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-1px);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 40px;
+  padding: 64px 0 32px;
+}
+
+.heroCopy {
+  max-width: 660px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.heroCopy h1 {
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 0.96;
+  letter-spacing: -0.07em;
+  margin-bottom: 20px;
+  color: #f8fafc;
+}
+
+.heroCopy p {
+  max-width: 560px;
+  font-size: 1.12rem;
+  line-height: 1.8;
+  color: rgba(226, 232, 240, 0.8);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.statGrid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 540px;
+}
+
+.statCard {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 18px;
+  padding: 18px 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.statCard strong {
+  display: block;
+  font-size: 1.45rem;
+  color: #f8fafc;
+}
+
+.statCard span {
+  color: rgba(226, 232, 240, 0.7);
+  font-size: 0.82rem;
+}
+
+.heroVisual {
+  display: flex;
+  justify-content: center;
+}
+
+.visualPanel {
+  position: relative;
+  width: min(100%, 520px);
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.96), rgba(15, 23, 42, 0.88));
+  color: #f8fafc;
+  border-radius: 30px;
+  padding: 18px;
+  box-shadow: 0 30px 70px rgba(15, 23, 42, 0.42);
+  overflow: hidden;
+  border: 1px solid rgba(251, 191, 36, 0.15);
+}
+
+.heroCollage {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 16px;
+  min-height: 430px;
+}
+
+.featureImageLarge,
+.featureImageSmall {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.featureImageLarge img,
+.featureImageSmall img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.featureImageLarge {
+  min-height: 420px;
+}
+
+.featureStack {
+  display: grid;
+  gap: 16px;
+}
+
+.featureImageSmall {
+  min-height: 200px;
+}
+
+.videoBadge {
+  position: absolute;
+  left: 28px;
+  bottom: 28px;
+  display: grid;
+  gap: 4px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 12px 16px;
+  backdrop-filter: blur(8px);
+}
+
+.videoBadge span {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fbbf24;
+}
+
+.videoBadge strong {
+  font-size: 1.15rem;
+}
+
+.section,
+.sectionAlt,
+.ctaSection {
+  margin-top: 32px;
+}
+
+.sectionHeading {
+  margin-bottom: 24px;
+}
+
+.sectionHeading h2 {
+  max-width: 620px;
+  font-size: clamp(2rem, 3vw, 3rem);
+  letter-spacing: -0.05em;
+  line-height: 1.08;
+  color: #f8fafc;
+}
+
+.focusGrid,
+.programGrid,
+.eventGrid {
+  display: grid;
+  gap: 22px;
+}
+
+.focusGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.infoCard,
+.programCard,
+.eventCard,
+.galleryCard,
+.certCard,
+.memberPhotoCard,
+.contactForm,
+.statCard,
+.memberShowcase {
+  background: rgba(15, 23, 42, 0.76);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 24px;
+  box-shadow: 0 16px 34px rgba(2, 6, 23, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.infoCard:hover,
+.programCard:hover,
+.eventCard:hover,
+.galleryCard:hover,
+.certCard:hover,
+.memberPhotoCard:hover,
+.statCard:hover,
+.memberShowcase:hover {
+  transform: translateY(-6px);
+  border-color: rgba(251, 191, 36, 0.34);
+  box-shadow: 0 22px 50px rgba(2, 6, 23, 0.42);
+}
+
+.galleryCard img,
+.certCard img,
+.memberPhotoCard img,
+.showcaseImageWrap img,
+.featureImageLarge img,
+.featureImageSmall img {
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.galleryCard:hover img,
+.certCard:hover img,
+.memberPhotoCard:hover img,
+.showcaseImageWrap:hover img,
+.featureImageLarge:hover img,
+.featureImageSmall:hover img {
+  transform: scale(1.03);
+  filter: saturate(1.08);
+}
+
+.infoCard,
+.programCard,
+.eventCard {
+  padding: 24px;
+}
+
+.cardIcon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.14), rgba(220, 38, 38, 0.12));
+  color: #fbbf24;
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+.infoCard h3,
+.programCard h3,
+.eventCard h3 {
+  font-size: 1.45rem;
+  margin-bottom: 12px;
+  color: #f8fafc;
+}
+
+.infoCard p,
+.programCard p,
+.eventCard p {
+  line-height: 1.7;
+  color: rgba(226, 232, 240, 0.78);
+}
+
+.sectionAlt {
+  background: linear-gradient(180deg, rgba(251, 191, 36, 0.06), rgba(15, 23, 42, 0.78));
+  border: 1px solid rgba(251, 191, 36, 0.12);
+  border-radius: 30px;
+  padding: 28px 22px;
+}
+
+.programGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.programEyebrow {
+  color: #fbbf24;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.eventGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.eventCard {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.dateBox {
+  min-width: 80px;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.24);
+  border-radius: 18px;
+  padding: 14px 12px;
+  text-align: center;
+}
+
+.dateBox span {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fbbf24;
+}
+
+.dateBox strong {
+  display: block;
+  font-size: 2rem;
+  line-height: 1;
+  margin-top: 8px;
+  color: #f8fafc;
+}
+
+.eventBody {
+  flex: 1;
+}
+
+.ctaSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 30px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.96), rgba(15, 23, 42, 0.9));
+  color: #f8fafc;
+  border: 1px solid rgba(251, 191, 36, 0.14);
+}
+
+.ctaSection h2 {
+  max-width: 540px;
+  font-size: clamp(1.9rem, 2.5vw, 2.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+}
+
+.ctaActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 4px 6px;
+  color: rgba(226, 232, 240, 0.72);
+}
+
+.footer div {
+  display: flex;
+  gap: 18px;
+}
+
+.gallerySection {
+  margin-top: 32px;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.galleryCard,
+.certCard,
+.memberPhotoCard {
+  overflow: hidden;
+  box-shadow: 0 16px 34px rgba(2, 6, 23, 0.35);
+}
+
+.galleryCard img,
+.certCard img,
+.memberPhotoCard img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.certGrid,
+.memberPhotoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.memberShowcase {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 22px;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.76);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 28px;
+  padding: 20px;
+  margin-bottom: 22px;
+}
+
+.showcaseText {
+  display: grid;
+  gap: 12px;
+}
+
+.showcaseText h3 {
+  font-size: clamp(1.8rem, 2vw, 2.4rem);
+  line-height: 1.1;
+  color: #f8fafc;
+}
+
+.showcaseText p {
+  color: rgba(226, 232, 240, 0.78);
+  line-height: 1.7;
+}
+
+.showcaseImageWrap {
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+.showcaseImageWrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.benefitList {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+  list-style: none;
+  color: rgba(226, 232, 240, 0.9);
+}
+
+.benefitList li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.benefitList li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #fbbf24;
+}
+
+.contactForm {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.contactForm label {
+  display: grid;
+  gap: 8px;
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.contactForm input,
+.contactForm textarea {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  font: inherit;
+  background: rgba(15, 23, 42, 0.5);
+  color: #f8fafc;
+}
+
+.contactForm textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.floatingDonationButton {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 30;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f59e0b, #dc2626);
+  color: white;
+  padding: 0.9rem 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 20px 45px rgba(234, 88, 12, 0.35);
+  cursor: pointer;
+}
+
+.donationModalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.7);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+  z-index: 40;
+  padding: 20px;
+}
+
+.donationModal {
+  width: min(520px, 100%);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.94));
+  border: 1px solid rgba(251, 191, 36, 0.18);
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 30px 70px rgba(2, 6, 23, 0.4);
+}
+
+.donationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.donationHeader h3 {
+  font-size: 1.7rem;
+  color: #f8fafc;
+}
+
+.donationTabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.donationTab,
+.donationTabActive {
+  border-radius: 12px;
+  padding: 0.7rem 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.donationTab {
+  background: rgba(15, 23, 42, 0.52);
+  color: #e2e8f0;
+}
+
+.donationTabActive {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(251, 191, 36, 0.8);
+  color: #fbbf24;
+}
+
+.closeButton {
+  border: 0;
+  background: rgba(148, 163, 184, 0.12);
+  color: #f8fafc;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.donationForm {
+  display: grid;
+  gap: 18px;
+}
+
+.donationAmountGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.amountChip,
+.amountChipActive {
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  padding: 0.85rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.amountChip {
+  background: rgba(15, 23, 42, 0.5);
+  color: #f8fafc;
+}
+
+.amountChipActive {
+  background: rgba(245, 158, 11, 0.14);
+  border-color: rgba(251, 191, 36, 0.8);
+  color: #fbbf24;
+}
+
+.donationField {
+  display: grid;
+  gap: 8px;
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.donationField input {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.5);
+  color: #f8fafc;
+  padding: 0.9rem 1rem;
+}
+
+.bankInfoBox {
+  display: grid;
+  gap: 8px;
+  background: rgba(251, 191, 36, 0.05);
+  border: 1px solid rgba(251, 191, 36, 0.18);
+  border-radius: 16px;
+  padding: 1rem;
+  color: #f8fafc;
+}
+
+.bankInfoBox p {
+  color: #f8fafc;
+}
+
+.successPage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 40px 20px;
+}
+
+.successCard {
+  width: min(700px, 100%);
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(251, 191, 36, 0.18);
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 30px 70px rgba(2, 6, 23, 0.42);
+}
+
+.successCard h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #f8fafc;
+  margin-bottom: 10px;
+}
+
+.successCard p {
+  color: rgba(226, 232, 240, 0.8);
+  line-height: 1.8;
+}
+
+.successGrid {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.successMeta {
+  background: rgba(15, 23, 42, 0.54);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.successMeta strong {
+  display: block;
+  color: #fbbf24;
+  margin-bottom: 6px;
+}
+
+.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+:global([data-reveal]) {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+@media (max-width: 900px) {
+  .topbar,
+  .hero,
+  .ctaSection,
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .topbar {
+    position: static;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 12px 18px;
+  }
+
+  .hero,
+  .focusGrid,
+  .programGrid,
+  .eventGrid,
+  .galleryGrid,
+  .certGrid,
+  .memberPhotoGrid,
+  .memberShowcase,
+  .ctaSection,
+  .formRow {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .ctaSection {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    width: min(100% - 20px, 1200px);
+    padding-top: 18px;
+  }
+
+  .topbar,
+  .infoCard,
+  .programCard,
+  .eventCard,
+  .ctaSection {
+    border-radius: 20px;
+  }
+
+  .topbar {
+    padding: 16px 18px;
+  }
+
+  .hero {
+    padding-top: 28px;
+  }
+
+  .heroActions,
+  .ctaActions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+
+  .statGrid,
+  .donationAmountGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .eventCard {
+    flex-direction: column;
+  }
+
+  .footer {
+    gap: 12px;
+  }
+
+  .floatingDonationButton {
+    right: 16px;
+    bottom: 16px;
+  }
+}
