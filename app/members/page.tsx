@@ -35,6 +35,19 @@ const memberPhotos = [
   "/images/member4.jpeg",
 ];
 
+const executiveMembers = [
+  { image: "/images/1.jpeg", name: "Dr. M. K. Moh'd Alokhose", role: "President", order: 1 },
+  { image: "/images/7.jpeg", name: "Engr. Solomon Osazuwa", role: "Vice President", order: 2 },
+  { image: "/images/8.jpeg", name: "James Femi Emmanuel", role: "General Secretary", order: 3 },
+  { image: "/images/2.jpeg", name: "Usman Deeyat (Excellent)", role: "Publicity Secretary / Media", order: 4 },
+  { image: "/images/4.jpeg", name: "Engr. John Eshofosimeh Sunday", role: "Organizing Secretary", order: 5 },
+  { image: "/images/5.jpeg", name: "Pst. Ayo Aljanatu", role: "Assistant Secretary", order: 6 },
+  { image: "/images/3.jpeg", name: "Victor Ofure", role: "Provost", order: 7 },
+  { image: "/images/6.jpeg", name: "Hon. Johnson Olatunde Ayo", role: "Legal Adviser", order: 8 },
+  { image: "/images/10.jpeg", name: "Madam Success", role: "Financial Secretary", order: 9 },
+  { image: "/images/9.jpeg", name: "Fabia", role: "Mobilization Officer", order: 10 },
+].sort((a, b) => a.order - b.order);
+
 export default function MembersPage() {
   useEffect(() => {
     const elements = document.querySelectorAll("[data-reveal]");
@@ -106,6 +119,27 @@ export default function MembersPage() {
                   <li key={perk}>{perk}</li>
                 ))}
               </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section data-reveal className={styles.sectionAlt}>
+        <div className={styles.sectionHeading}>
+          <span className={styles.eyebrow}>Executive committee</span>
+          <h2>Meet the leadership guiding Edo Forum Abuja.</h2>
+        </div>
+
+        <div className={styles.executiveGrid}>
+          {executiveMembers.map((member) => (
+            <article key={member.name} className={styles.executiveCard}>
+              <div className={styles.executiveImageWrap}>
+                <Image src={member.image} alt={member.name} width={600} height={420} />
+              </div>
+              <div className={styles.executiveInfo}>
+                <span className={styles.executiveRole}>{member.role}</span>
+                <h3>{member.name}</h3>
+              </div>
             </article>
           ))}
         </div>

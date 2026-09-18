@@ -3,10 +3,13 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "../page.module.css";
+import Footer from "../components/Footer";
 
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const whatsappLink =
+    process.env.NEXT_PUBLIC_WHATSAPP_GROUP_LINK || "https://wa.me/2348066364741?text=Hello%20Edo%20Forum%20Abuja";
 
   useEffect(() => {
     const elements = document.querySelectorAll("[data-reveal]");
@@ -84,9 +87,14 @@ export default function ContactPage() {
           <a href="/contact">Contact</a>
         </nav>
 
-        <a href="mailto:hello@edoforumabuja.org" className={styles.primaryButton}>
-          Email us
-        </a>
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <a href="mailto:hello@edoforumabuja.org" className={styles.primaryButton}>
+            Email us
+          </a>
+          <a href={whatsappLink} target="_blank" rel="noreferrer" className={styles.secondaryButton}>
+            WhatsApp group
+          </a>
+        </div>
       </header>
 
       <section data-reveal className={styles.section}>
@@ -103,7 +111,7 @@ export default function ContactPage() {
           </article>
           <article className={styles.programCard}>
             <p className={styles.programEyebrow}>Phone</p>
-            <h3>+234 800 000 0000</h3>
+            <h3>+234 806 636 4741</h3>
             <p>Speak with the team to learn how to get involved and support the community.</p>
           </article>
           <article className={styles.programCard}>
@@ -147,15 +155,10 @@ export default function ContactPage() {
           ) : null}
         </form>
       </section>
-
-      <footer className={styles.footer}>
-        <p>© 2026 Edo Forum Abuja</p>
-        <div>
-          <a href="/about">About</a>
-          <a href="/members">Members</a>
-          <a href="/contact">Contact</a>
-        </div>
-      </footer>
+      <div>
+        
+        <Footer />
+      </div>
     </main>
   );
 }
