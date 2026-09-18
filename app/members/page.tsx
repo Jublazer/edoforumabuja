@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "../page.module.css";
 
 const memberships = [
@@ -48,7 +48,130 @@ const executiveMembers = [
   { image: "/images/9.jpeg", name: "Fabia", role: "Mobilization Officer", order: 10 },
 ].sort((a, b) => a.order - b.order);
 
+const donationAmounts = ["5000", "15000", "25000", "50000"];
+
 export default function MembersPage() {
+  const [donationOpen, setDonationOpen] = useState(false);
+  const [selectedAmount, setSelectedAmount] = useState("25000");
+  const [donationMode, setDonationMode] = useState<"paystack" | "bank">("paystack");
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const bankDetails = {
+    bankName: "Zenith Bank Nigeria Plc",
+    accountName: "Edo Forum Abuja",
+    accountNumber: "1012345678",
+    sortCode: "057",
+  };
+
+  const handleDonationSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const cleanValue = selectedAmount.replace(/[^\d]/g, "");
+    const parsedAmount = Number(cleanValue || 0);
+
+    if (!parsedAmount || parsedAmount < 1000) {
+      window.alert("Please choose a donation amount of at least ₦1,000.");
+      return;
+    }
+
+    if (donationMode === "bank") {
+      setDonationOpen(false);
+      window.location.href = `/donate/success?amount=${parsedAmount}&payment=bank`;
+      return;
+    }
+
+    const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
+
+    if (publicKey && typeof window !== "undefined") {
+      const loadScript = (src: string) =>
+        new Promise<void>((resolve, reject) => {
+          const existingScript = document.querySelector(`script[src="${src}"]`);
+          if (existingScript) {
+            resolve();
+            return;
+          }
+
+          const script = document.createElement("script");
+          script.src = src;
+          script.async = true;
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error("Unable to load payment gateway."));
+          document.body.appendChild(script);
+        });
+
+      try {
+        setIsProcessing(true);
+
+        if (!(window as any).PaystackPop) {
+          await loadScript("https://js.paystack.co/v1/inline.js");
+        }
+
+        const reference = `EFA-${Date.now()}`;
+        const handler = (window as any).PaystackPop.setup({
+          key: publicKey,
+          email: "support@edoforumabuja.org",
+          amount: parsedAmount * 100,
+          currency: "NGN",
+          ref: reference,
+          metadata: {
+            custom_fields: [
+              {
+                display_name: "Donation purpose",
+                variable_name: "donation_purpose",
+                value: "Edo Forum Abuja community support",
+              },
+            ],
+          },
+          callback: async (response: { reference?: string }) => {
+            try {
+              const verifyResponse = await fetch("/api/donate/verify", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  reference: response.reference,
+                  amount: parsedAmount,
+                  email: "support@edoforumabuja.org",
+                }),
+              });
+
+              const verifyData = await verifyResponse.json();
+
+              if (!verifyResponse.ok || !verifyData.success) {
+                throw new Error(verifyData.error || "Payment verification failed.");
+              }
+
+              setDonationOpen(false);
+              window.location.href = `/donate/success?amount=${parsedAmount}&payment=paystack&reference=${encodeURIComponent(response.reference || reference)}`;
+            } catch (error) {
+              console.error(error);
+              window.alert("We could not confirm your donation. Please contact donations@edoforumabuja.org for support.");
+              setDonationOpen(false);
+            } finally {
+              setIsProcessing(false);
+            }
+          },
+          onClose: () => {
+            setDonationOpen(false);
+            setIsProcessing(false);
+          },
+        });
+
+        handler.openIframe();
+        return;
+      } catch (error) {
+        console.error(error);
+        setIsProcessing(false);
+      }
+    }
+
+    const subject = encodeURIComponent("Donation support for Edo Forum Abuja");
+    const body = encodeURIComponent(
+      `Hello Edo Forum Abuja, I would like to support the community with ₦${parsedAmount}. Please share the donation details.`,
+    );
+
+    window.location.href = `mailto:donations@edoforumabuja.org?subject=${subject}&body=${body}`;
+    setDonationOpen(false);
+  };
+
   useEffect(() => {
     const elements = document.querySelectorAll("[data-reveal]");
     const observer = new IntersectionObserver(
@@ -172,7 +295,9 @@ export default function MembersPage() {
               <p className={styles.programEyebrow}>{donation.amount}</p>
               <h3>{donation.title}</h3>
               <p>{donation.text}</p>
-              <a href="/contact" className={styles.secondaryButton}>Donate now</a>
+              <button type="button" className={styles.secondaryButton} onClick={() => setDonationOpen(true)}>
+                Donate now
+              </button>
             </article>
           ))}
         </div>
@@ -186,6 +311,82 @@ export default function MembersPage() {
           <a href="/contact">Contact</a>
         </div>
       </footer>
+
+      {donationOpen ? (
+        <div className={styles.donationModalBackdrop} onClick={() => setDonationOpen(false)}>
+          <div className={styles.donationModal} onClick={(event) => event.stopPropagation()}>
+            <div className={styles.donationHeader}>
+              <div>
+                <p className={styles.eyebrow}>Support the mission</p>
+                <h3>Invest in community impact</h3>
+              </div>
+              <button type="button" className={styles.closeButton} onClick={() => setDonationOpen(false)}>
+                ×
+              </button>
+            </div>
+
+            <form onSubmit={handleDonationSubmit} className={styles.donationForm}>
+              <div className={styles.donationTabs}>
+                <button
+                  type="button"
+                  className={donationMode === "paystack" ? styles.donationTabActive : styles.donationTab}
+                  onClick={() => setDonationMode("paystack")}
+                >
+                  Card / Paystack
+                </button>
+                <button
+                  type="button"
+                  className={donationMode === "bank" ? styles.donationTabActive : styles.donationTab}
+                  onClick={() => setDonationMode("bank")}
+                >
+                  Bank transfer
+                </button>
+              </div>
+
+              <div className={styles.donationAmountGrid}>
+                {donationAmounts.map((amount) => (
+                  <button
+                    key={amount}
+                    type="button"
+                    className={selectedAmount === amount ? styles.amountChipActive : styles.amountChip}
+                    onClick={() => setSelectedAmount(amount)}
+                  >
+                    ₦{Number(amount).toLocaleString()}
+                  </button>
+                ))}
+              </div>
+
+              <label className={styles.donationField}>
+                Custom amount
+                <input
+                  type="number"
+                  min="1000"
+                  step="1000"
+                  value={selectedAmount}
+                  onChange={(event) => setSelectedAmount(event.target.value)}
+                />
+              </label>
+
+              {donationMode === "bank" ? (
+                <div className={styles.bankInfoBox}>
+                  <p>Bank: {bankDetails.bankName}</p>
+                  <p>Account Name: {bankDetails.accountName}</p>
+                  <p>Account Number: {bankDetails.accountNumber}</p>
+                  <p>Sort Code: {bankDetails.sortCode}</p>
+                </div>
+              ) : null}
+
+              <button type="submit" className={styles.primaryButton} disabled={isProcessing}>
+                {isProcessing
+                  ? "Processing..."
+                  : donationMode === "bank"
+                    ? "Confirm bank transfer"
+                    : "Donate now"}
+              </button>
+            </form>
+          </div>
+        </div>
+      ) : null}
     </main>
   );
 }
