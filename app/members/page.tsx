@@ -46,6 +46,7 @@ const executiveMembers = [
   { image: "/images/6.jpeg", name: "Hon. Johnson Olatunde Ayo", role: "Legal Adviser", order: 8 },
   { image: "/images/10.jpeg", name: "Madam Success", role: "Financial Secretary", order: 9 },
   { image: "/images/9.jpeg", name: "Fabia", role: "Mobilization Officer", order: 10 },
+  { image: "/images/11.jpeg", name: "", role: "Organizing President", order: 11 },
 ].sort((a, b) => a.order - b.order);
 
 const donationAmounts = ["5000", "15000", "25000", "50000"];

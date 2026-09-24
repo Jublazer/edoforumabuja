@@ -106,7 +106,7 @@ export default function ContactPage() {
         <div className={styles.programGrid}>
           <article className={styles.programCard}>
             <p className={styles.programEyebrow}>Email</p>
-            <h3>hello@edoforumabuja.org</h3>
+            <h3>edoforumabuja@gmail.com</h3>
             <p>For partnerships, membership requests, and event inquiries.</p>
           </article>
           <article className={styles.programCard}>
