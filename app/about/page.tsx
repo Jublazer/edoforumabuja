@@ -84,7 +84,8 @@ export default function AboutPage() {
       <section data-reveal className={styles.sectionAlt}>
         <div className={styles.sectionHeading}>
           <span className={styles.eyebrow}>Recognition</span>
-          <h2>Milestones, awards, and community impact we are proud of.</h2>
+          {/* <h2>Milestones, awards, and community impact we are proud of.</h2> */}
+          <h2>Certificates of Inaugurations and General Assembly</h2>
         </div>
         <div className={styles.certGrid}>
           {certImages.map((src, index) => (

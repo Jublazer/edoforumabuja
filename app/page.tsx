@@ -73,9 +73,9 @@ export default function Home() {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const bankDetails = {
-    bankName: "Zenith Bank Nigeria Plc",
-    accountName: "Edo Forum Abuja",
-    accountNumber: "1012345678",
+    bankName: " UBA",
+    accountName: "EDO INDIGENOUS FORUM FCT ABUJA",
+    accountNumber: "2423132126",
     sortCode: "057",
   };
 
@@ -151,7 +151,7 @@ export default function Home() {
               {
                 display_name: "Donation purpose",
                 variable_name: "donation_purpose",
-                value: "Edo Forum Abuja community support",
+                value: "Edo Indegenous Forum Abuja community support",
               },
             ],
           },
