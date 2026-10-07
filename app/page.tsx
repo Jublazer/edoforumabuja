@@ -197,9 +197,9 @@ export default function Home() {
       }
     }
 
-    const subject = encodeURIComponent("Donation support for Edo Forum Abuja");
+    const subject = encodeURIComponent("Donation support for Edo Indigenous Forum Abuja");
     const body = encodeURIComponent(
-      `Hello Edo Forum Abuja, I would like to support the community with ₦${parsedAmount}. Please share the donation details.`,
+      `Hello Edo Indigenous Forum Abuja, I would like to support the community with ₦${parsedAmount}. Please share the donation details.`,
     );
 
     window.location.href = `mailto:donations@edoforumabuja.org?subject=${subject}&body=${body}`;
@@ -215,10 +215,10 @@ export default function Home() {
       <header data-reveal className={styles.topbar}>
         <div className={styles.brandWrap}>
           <div className={styles.brandLogoWrap}>
-            <Image src="/images/logo.jpeg" alt="Edo Forum Abuja logo" width={44} height={44} />
+            <Image src="/images/logo.jpeg" alt="Edo Indigenous Forum Abuja logo" width={44} height={44} />
           </div>
           <div>
-            <p className={styles.brandName}>Edo Forum Abuja</p>
+            <p className={styles.brandName}>Edo Indigenous Forum Abuja</p>
             <span className={styles.tagline}>Unity • Culture • Progress</span>
           </div>
         </div>
@@ -239,7 +239,7 @@ export default function Home() {
           <span className={styles.eyebrow}>A thriving Edo community in Abuja</span>
           <h1>Building belonging, opportunity, and pride for Edo people in the capital.</h1>
           <p>
-            Edo Forum Abuja connects families, professionals, students, and entrepreneurs in a vibrant
+            Edo Indigenous Forum Abuja connects families, professionals, students, and entrepreneurs in a vibrant
             community focused on culture, leadership, and collective progress.
           </p>
 
@@ -361,7 +361,7 @@ export default function Home() {
       <section data-reveal id="join" className={styles.ctaSection}>
         <div>
           <span className={styles.eyebrow}>Get involved</span>
-          <h2>Stand with Edo Forum Abuja and help shape a stronger future.</h2>
+          <h2>Stand with Edo Indigenous Forum Abuja and help shape a stronger future.</h2>
         </div>
         <div className={styles.ctaActions}>
           <a href="/members" className={styles.primaryButton}>
@@ -374,7 +374,7 @@ export default function Home() {
       </section>
 
       <footer className={styles.footer}>
-        <p>© 2026 Edo Forum Abuja</p>
+        <p>© 2026 Edo Indigenous Forum Abuja</p>
         <div>
           <a href="/about">About</a>
           <a href="/members">Members</a>

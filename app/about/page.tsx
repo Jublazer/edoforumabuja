@@ -45,10 +45,10 @@ export default function AboutPage() {
       <header className={styles.topbar}>
         <div className={styles.brandWrap}>
           <div className={styles.brandLogoWrap}>
-            <Image src="/images/logo.jpeg" alt="Edo Forum Abuja logo" width={44} height={44} />
+            <Image src="/images/logo.jpeg" alt="Edo Indigenous Forum Abuja logo" width={44} height={44} />
           </div>
           <div>
-            <p className={styles.brandName}>Edo Forum Abuja</p>
+            <p className={styles.brandName}>Edo Indigenous Forum Abuja</p>
             <span className={styles.tagline}>Unity • Culture • Progress</span>
           </div>
         </div>
@@ -160,7 +160,7 @@ export default function AboutPage() {
       </section>
 
       <footer className={styles.footer}>
-        <p>© 2026 Edo Forum Abuja</p>
+        <p>© 2026 Edo Indigenous Forum Abuja</p>
         <div>
           <a href="/about">About</a>
           <a href="/members">Members</a>

@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     const emailText = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
     const htmlMessage = `
       <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #0f172a;">
-        <h2 style="margin-bottom: 16px; color: #111827;">New message from Edo Forum Abuja</h2>
+        <h2 style="margin-bottom: 16px; color: #111827;">New message from Edo Indigenous Forum Abuja</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Subject:</strong> ${subject}</p>
@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 587),
-      secure: false,
+      secure: Number(process.env.SMTP_PORT || 587) === 465,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to: process.env.CONTACT_EMAIL || "hello@edoforumabuja.org",
       replyTo: email,
-      subject: `Edo Forum Abuja: ${subject}`,
+      subject: `Edo Indigenous Forum Abuja: ${subject}`,
       text: emailText,
       html: htmlMessage,
     });
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
 
     if (whatsappToken && whatsappPhoneNumberId && whatsappTo) {
       try {
-        const whatsappMessage = `New message from Edo Forum Abuja\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`;
+        const whatsappMessage = `New message from Edo Indigenous Forum Abuja\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`;
 
         const whatsappResponse = await fetch(
           `https://graph.facebook.com/v19.0/${whatsappPhoneNumberId}/messages`,

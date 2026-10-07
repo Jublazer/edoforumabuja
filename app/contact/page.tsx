@@ -9,7 +9,7 @@ export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
   const whatsappLink =
-    process.env.NEXT_PUBLIC_WHATSAPP_GROUP_LINK || "https://wa.me/2348066364741?text=Hello%20Edo%20Forum%20Abuja";
+    process.env.NEXT_PUBLIC_WHATSAPP_GROUP_LINK || "https://wa.me/2348066364741?text=Hello%20Edo%20Indigenous%20Forum%20Abuja";
 
   useEffect(() => {
     const elements = document.querySelectorAll("[data-reveal]");
@@ -72,10 +72,10 @@ export default function ContactPage() {
       <header className={styles.topbar}>
         <div className={styles.brandWrap}>
           <div className={styles.brandLogoWrap}>
-            <Image src="/images/logo.jpeg" alt="Edo Forum Abuja logo" width={44} height={44} />
+            <Image src="/images/logo.jpeg" alt="Edo Indigenous Forum Abuja logo" width={44} height={44} />
           </div>
           <div>
-            <p className={styles.brandName}>Edo Forum Abuja</p>
+            <p className={styles.brandName}>Edo Indigenous Forum Abuja</p>
             <span className={styles.tagline}>Unity • Culture • Progress</span>
           </div>
         </div>

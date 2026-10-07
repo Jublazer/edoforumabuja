@@ -16,7 +16,7 @@ export default function DonationSuccessPage({
         <p className={styles.eyebrow}>Thank you</p>
         <h1>Your contribution matters.</h1>
         <p>
-          We are grateful for your generosity and support for Edo Forum Abuja. Your donation will help us
+          We are grateful for your generosity and support for Edo Indigenous Forum Abuja. Your donation will help us
           strengthen community programs, youth opportunities, and cultural initiatives across Abuja.
         </p>
 

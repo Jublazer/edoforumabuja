@@ -34,7 +34,7 @@ export default function EventsPage() {
         <div className={styles.brandWrap}>
           <div className={styles.brandMark}>E</div>
           <div>
-            <p className={styles.brandName}>Edo Forum Abuja</p>
+            <p className={styles.brandName}>Edo Indigenous Forum Abuja</p>
             <span className={styles.tagline}>Unity • Culture • Progress</span>
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function EventsPage() {
       </section>
 
       <footer className={styles.footer}>
-        <p>© 2026 Edo Forum Abuja</p>
+        <p>© 2026 Edo Indigenous Forum Abuja</p>
         <div>
           <a href="/about">About</a>
           <a href="/events">Events</a>

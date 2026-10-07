@@ -52,7 +52,7 @@ Use a Gmail or SMTP provider that supports app passwords. For Gmail, generate an
 4. Set the production domain in `NEXT_PUBLIC_SITE_URL` to your live URL, for example:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://edoforumabuja.org
+NEXT_PUBLIC_SITE_URL=https://www.edoindigenousforumfct.com
 ```
 
 5. Deploy.

@@ -118,7 +118,7 @@ export default function MembersPage() {
               {
                 display_name: "Donation purpose",
                 variable_name: "donation_purpose",
-                value: "Edo Forum Abuja community support",
+                value: "Edo Indigenous Forum Abuja community support",
               },
             ],
           },
@@ -164,9 +164,9 @@ export default function MembersPage() {
       }
     }
 
-    const subject = encodeURIComponent("Donation support for Edo Forum Abuja");
+    const subject = encodeURIComponent("Donation support for Edo Indigenous Forum Abuja");
     const body = encodeURIComponent(
-      `Hello Edo Forum Abuja, I would like to support the community with ₦${parsedAmount}. Please share the donation details.`,
+      `Hello Edo Indigenous Forum Abuja, I would like to support the community with ₦${parsedAmount}. Please share the donation details.`,
     );
 
     window.location.href = `mailto:donations@edoforumabuja.org?subject=${subject}&body=${body}`;
@@ -196,10 +196,10 @@ export default function MembersPage() {
       <header className={styles.topbar}>
         <div className={styles.brandWrap}>
           <div className={styles.brandLogoWrap}>
-            <Image src="/images/logo.jpeg" alt="Edo Forum Abuja logo" width={44} height={44} />
+            <Image src="/images/logo.jpeg" alt="Edo Indigenous Forum Abuja logo" width={44} height={44} />
           </div>
           <div>
-            <p className={styles.brandName}>Edo Forum Abuja</p>
+            <p className={styles.brandName}>Edo Indigenous Forum Abuja</p>
             <span className={styles.tagline}>Unity • Culture • Progress</span>
           </div>
         </div>
@@ -229,7 +229,7 @@ export default function MembersPage() {
             <p>From learning and advocacy to professional opportunities and cultural pride, members help one another thrive.</p>
           </div>
           <div className={styles.showcaseImageWrap}>
-            <Image src="/images/member4.jpeg" alt="Edo Forum Abuja members" width={700} height={500} />
+            <Image src="/images/member4.jpeg" alt="Edo Indigenous Forum Abuja members" width={700} height={500} />
           </div>
         </div>
 
@@ -251,7 +251,7 @@ export default function MembersPage() {
       <section data-reveal className={styles.sectionAlt}>
         <div className={styles.sectionHeading}>
           <span className={styles.eyebrow}>Executive committee</span>
-          <h2>Meet the leadership guiding Edo Forum Abuja.</h2>
+          <h2>Meet the leadership guiding Edo Indigenous Forum Abuja.</h2>
         </div>
 
         <div className={styles.executiveGrid}>
@@ -305,7 +305,7 @@ export default function MembersPage() {
       </section>
 
       <footer className={styles.footer}>
-        <p>© 2026 Edo Forum Abuja</p>
+        <p>© 2026 Edo Indigenous Forum Abuja</p>
         <div>
           <a href="/about">About</a>
           <a href="/members">Members</a>
